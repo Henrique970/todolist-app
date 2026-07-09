@@ -37,18 +37,25 @@ const TodoList = () => {
                     <p>{todos.length} items total</p>
                     {/* O hidden esconde os elementos */}
                     <div className="hidden sm:flex gap-4 ">
-                        <button className='text-bright-blue cursor-pointer'>All</button>
-                        <button className='cursor-pointer'>Active</button>
-                        <button className='cursor-pointer'>Completed</button>
+                        
+                        <button className={`text-bright-blue cursor-pointer ${theme === "dark" ? "hover:text-neutral-light-grayish-blue-hover" : "hover:text-neutral-very-dark-grayish-blue"}`}>All</button>
+
+                        <button className={`cursor-pointer ${theme === "dark" ? "hover:text-neutral-light-grayish-blue-hover" : "hover:text-neutral-very-dark-grayish-blue"}`}>Active</button>
+
+                        <button className={`cursor-pointer ${theme === "dark" ? "hover:text-neutral-light-grayish-blue-hover" : "hover:text-neutral-very-dark-grayish-blue"}`}>Completed</button>
                     </div>
-                    <button>Clear Completed</button>
+                    <button className={`cursor-pointer ${theme === "dark" ? "hover:text-neutral-light-grayish-blue-hover" : "hover:text-neutral-very-dark-grayish-blue"}`}>Clear Completed</button>
 
                 </div>
             </div>
             <div className={`${themeConfig[theme].todo.backgroundColor} ${themeConfig[theme].layout.textColor} flex justify-center gap-5 py-4 rounded-md mt-4 sm:hidden`}>
-                <button className='text-bright-blue cursor-pointer'>All</button>
-                <button className='cursor-pointer'>Active</button>
-            <button className='cursor-pointer'>Completed</button>
+
+                <button className={`text-bright-blue cursor-pointer ${theme === "dark" ? "hover:text-neutral-light-grayish-blue-hover" : "hover:text-neutral-very-dark-grayish-blue"}`}>All</button>
+
+                <button className={`cursor-pointer ${theme === "dark" ? "hover:text-neutral-light-grayish-blue-hover" : "hover:text-neutral-very-dark-grayish-blue"}`}>Active</button>
+
+                <button className={`cursor-pointer ${theme === "dark" ? "hover:text-neutral-light-grayish-blue-hover" : "hover:text-neutral-very-dark-grayish-blue"}`}>Completed</button>
+
             </div>
         </>
     )
