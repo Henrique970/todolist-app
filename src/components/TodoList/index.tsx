@@ -1,14 +1,13 @@
 import { useContext } from 'react';
 import { themeConfig } from '../../contexts/theme';
 import { ThemeContext } from '../../contexts/ThemeContext';
+import type { Todo } from '../../App';
 
-const todos = [
-    { id: 1, text: "Todo 1" },
-    { id: 2, text: "Todo 2" },
-    { id: 3, text: "Todo 3" }
-]
+interface TodoListProps {
+    todoList: Todo[]
+}
 
-const TodoList = () => {
+const TodoList = ({ todoList }: TodoListProps) => {
 
     const { theme } = useContext(ThemeContext);
 
@@ -17,7 +16,7 @@ const TodoList = () => {
             <div className={` ${themeConfig[theme].todo.backgroundColor} rounded-md`}>
                 <ul>
                     {
-                        todos.map((todo) => (
+                        todoList.map((todo) => (
                             <li key={todo.id} className={`p-6 border-b ${themeConfig[theme].todo.borderColor}`}>
 
                                 <div className="flex items-center gap-4">
@@ -34,10 +33,10 @@ const TodoList = () => {
 
                 </ul>
                 <div className={`text-sm flex justify-between p-4 ${themeConfig[theme].layout.textColor}`}>
-                    <p>{todos.length} items total</p>
+                    <p>{todoList.length} items total</p>
                     {/* O hidden esconde os elementos */}
                     <div className="hidden sm:flex gap-4 ">
-                        
+
                         <button className={`text-bright-blue cursor-pointer ${theme === "dark" ? "hover:text-neutral-light-grayish-blue-hover" : "hover:text-neutral-very-dark-grayish-blue"}`}>All</button>
 
                         <button className={`cursor-pointer ${theme === "dark" ? "hover:text-neutral-light-grayish-blue-hover" : "hover:text-neutral-very-dark-grayish-blue"}`}>Active</button>
