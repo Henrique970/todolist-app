@@ -3,6 +3,7 @@ import { themeConfig } from '../../contexts/theme';
 import { ThemeContext } from '../../contexts/ThemeContext';
 import type { Todo } from '../../hooks/useTodo';
 import IconCheck from '../../../public/images/icon-check.svg'
+import IconCross from '../../../public/images/icon-cross.svg'
 
 interface TodoListProps {
     todoList: Todo[]
@@ -10,9 +11,10 @@ interface TodoListProps {
     setFilter: (filter: "all" | "active" | "completed") => void;
     filter: "all" | "active" | "completed";
     clearCompleted: () => void;
+    deleteTodo: (id: number) => void;
 }
 
-const TodoList = ({ todoList, toggleTodoCompleted, setFilter, filter, clearCompleted }: TodoListProps) => {
+const TodoList = ({ todoList, toggleTodoCompleted, setFilter, filter, clearCompleted, deleteTodo }: TodoListProps) => {
 
     const { theme } = useContext(ThemeContext);
 
@@ -22,7 +24,7 @@ const TodoList = ({ todoList, toggleTodoCompleted, setFilter, filter, clearCompl
                 <ul>
                     {
                         todoList.map((todo) => (
-                            <li key={todo.id} className={`p-6 border-b ${themeConfig[theme].todo.borderColor}`}>
+                            <li key={todo.id} className={`p-6 border-b flex items-center justify-between gap-4 ${themeConfig[theme].todo.borderColor}`}>
 
                                 <div className="flex items-center gap-4">
                                     <span className="w-6 h-6 rounded-full hover:bg-[linear-gradient(to_right,hsl(210,100%,67%),hsl(280,87%,65%))] hover:p-px">
@@ -38,10 +40,12 @@ const TodoList = ({ todoList, toggleTodoCompleted, setFilter, filter, clearCompl
                                             }
 
                                         </button>
+                                        
                                     </span>
 
                                     <p className={`${themeConfig[theme].todo.textColor} ${todo.completed ? "line-through opacity-50" : ""}`}>{todo.text}</p>
                                 </div>
+                                <button><img src={IconCross} alt="Delete Todo" className="cursor-pointer" onClick={() => deleteTodo(todo.id)} /></button>
                             </li>
                         ))
                     }
