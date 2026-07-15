@@ -11,10 +11,10 @@ interface TodoListProps {
     setFilter: (filter: "all" | "active" | "completed") => void;
     filter: "all" | "active" | "completed";
     clearCompleted: () => void;
-    deleteTodo: (id: number) => void;
+    removeTodo: (id: number) => void;
 }
 
-const TodoList = ({ todoList, toggleTodoCompleted, setFilter, filter, clearCompleted, deleteTodo }: TodoListProps) => {
+const TodoList = ({ todoList, toggleTodoCompleted, setFilter, filter, clearCompleted, removeTodo }: TodoListProps) => {
 
     const { theme } = useContext(ThemeContext);
 
@@ -45,7 +45,7 @@ const TodoList = ({ todoList, toggleTodoCompleted, setFilter, filter, clearCompl
 
                                     <p className={`${themeConfig[theme].todo.textColor} ${todo.completed ? "line-through opacity-50" : ""}`}>{todo.text}</p>
                                 </div>
-                                <button><img src={IconCross} alt="Delete Todo" className="cursor-pointer" onClick={() => deleteTodo(todo.id)} /></button>
+                                <button><img src={IconCross} alt="Delete Todo" className="cursor-pointer" onClick={() => removeTodo(todo.id)} /></button>
                             </li>
                         ))
                     }

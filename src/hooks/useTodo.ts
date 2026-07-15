@@ -60,7 +60,7 @@ export const useTodo = () => {
         setTodoList(prev => prev.filter(todo => !todo.completed))
     }
 
-    const deleteTodo = (id: number) => {
+    const removeTodo = (id: number) => {
         setTodoList(prev => prev.filter(todo => todo.id !== id))
     }
 
@@ -71,6 +71,6 @@ export const useTodo = () => {
         clearCompleted,
         setFilter,
         filter,
-        deleteTodo
+        removeTodo
     };
 };
